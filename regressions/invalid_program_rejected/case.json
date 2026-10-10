@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "test": {
+    "test_id": "invalid_program_rejected",
+    "language": "c",
+    "category": "general",
+    "safety": "invalid",
+    "expected_stdout": null,
+    "expected_exit": null,
+    "seed": null,
+    "run_timeout": null,
+    "compile_timeout": null,
+    "float_tolerance": null,
+    "extra_flags": [],
+    "description": "intentionally invalid program",
+    "metadata": {
+      "origin": "file",
+      "path": "testcases/educational_undefined_behavior/invalid_missing_semicolon.c",
+      "safety_declared": true
+    }
+  },
+  "expected_outcome": "COMPILE_ERROR",
+  "optimizations": [
+    "O0",
+    "O1",
+    "O2",
+    "O3"
+  ],
+  "note": "ill-formed program must be rejected by every configuration",
+  "recorded_at": "2026-10-10T02:31:58+00:00"
+}

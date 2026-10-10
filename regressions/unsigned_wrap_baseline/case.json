@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "test": {
+    "test_id": "unsigned_wrap_baseline",
+    "language": "c",
+    "category": "integer_arithmetic",
+    "safety": "well_defined",
+    "expected_stdout": "205032704\n4294967291\n",
+    "expected_exit": 0,
+    "seed": null,
+    "run_timeout": null,
+    "compile_timeout": null,
+    "float_tolerance": null,
+    "extra_flags": [],
+    "description": "unsigned wraparound is defined",
+    "metadata": {
+      "origin": "file",
+      "path": "testcases/smoke/unsigned_wrap.c",
+      "safety_declared": true
+    }
+  },
+  "expected_outcome": "PASS",
+  "optimizations": [
+    "O0",
+    "O1",
+    "O2",
+    "O3"
+  ],
+  "note": "baseline: well-defined unsigned wraparound must agree at every level",
+  "recorded_at": "2026-10-10T02:31:57+00:00"
+}
