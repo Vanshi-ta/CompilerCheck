@@ -1,8 +1,7 @@
 # CompilerCheck - Automated Compiler Verification Framework
 
 CompilerCheck is a Python framework that compiles small C and C++ programs with Clang at
-several optimization levels, runs every resulting binary, compares the observable behavior
-and reports, classifies and preserves anything suspicious in a reproducible form.
+several optimization levels, runs every resulting binary, compares the observable behavior and reports, classifies and preserves anything suspicious in a reproducible form.
 
 > **Scope, honestly.** This is an educational compiler-verification framework built on an
 > existing compiler. It is not a replacement for production compiler validation
@@ -11,29 +10,17 @@ and reports, classifies and preserves anything suspicious in a reproducible form
 
 ## 1. Problem statement
 
-Optimizing compilers rewrite programs aggressively. For a program whose behavior is fully
-defined by the language standard, every optimization level must produce the same observable
-behavior. If `-O0` and `-O2` disagree, either the program is not as well defined as its
-author believed, or the compiler (or runtime) has a defect. Telling these apart reliably,
-automatically and reproducibly is the core of compiler verification.
+Optimizing compilers rewrite programs aggressively. For a program whose behavior is fully defined by the language standard, every optimization level must produce the same observable behavior. If `-O0` and `-O2` disagree, either the program is not as well defined as its author believed, or the compiler (or runtime) has a defect. Telling these apart reliably, automatically and reproducibly is the core of compiler verification.
 
 ## 2. Why compiler verification matters
 
-A compiler bug is a bug in every program it compiles, and it is usually invisible: the
-source is correct, the generated code is not. Differential testing (same program, different
-configurations, compare results) is one of the cheapest ways to find such defects at scale,
-and it needs careful infrastructure: controlled execution, a defensible comparison policy,
-protection against false positives from undefined behavior, minimal reproducers and
-regression tracking. CompilerCheck implements those pieces in a small, readable codebase.
+A compiler bug is a bug in every program it compiles, and it is usually invisible: the source is correct, the generated code is not. Differential testing (same program, different configurations, compare results) is one of the cheapest ways to find such defects at scale, and it needs careful infrastructure: controlled execution, a defensible comparison policy, protection against false positives from undefined behavior, minimal reproducers and regression tracking. CompilerCheck implements those pieces in a small, readable codebase.
 
 ## 3. Features
 
 * Built-in smoke suite with hand-verified expected outputs, a seeded program generator
-  (11 templates covering integer, signed/unsigned, loops, arrays, functions, structs,
-  floating point, boundary and optimization-sensitive code, plus C++ templates and RAII),
-  and loading of your own `.c` / `.cpp` files with per-file directives.
-* Compiler abstraction: discovery, version query, explicit `-std=`, `-O0/-O1/-O2/-O3/-Os/-Oz`,
-  captured diagnostics, durations, exit status and timeouts. No shell is ever used.
+  (11 templates covering integer, signed/unsigned, loops, arrays, functions, structs, floating point, boundary and optimization-sensitive code, plus C++ templates and RAII), and loading of your own `.c` / `.cpp` files with per-file directives.
+* Compiler abstraction: discovery, version query, explicit `-std=`, `-O0/-O1/-O2/-O3/-Os/-Oz`, captured diagnostics, durations, exit status and timeouts. No shell is ever used.
 * Execution engine with timeouts, bounded output capture and crash (signal / NTSTATUS) detection.
 * Differential engine with six outcomes: `PASS`, `MISMATCH`, `COMPILE_ERROR`, `TIMEOUT`,
   `CRASH`, `SKIPPED`; a documented comparison policy that normalizes nothing by default.
